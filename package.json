@@ -1,0 +1,25 @@
+{
+  "name": "landed_app",
+  "version": "1.0.0",
+  "description": "landed-app-price-tree",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx ts-node server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.20.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.20.0",
+    "price-tree-project": "file:../OneDrive/Documents/Code-Timber/price-tree-project",
+    "ts-node": "^10.9.2",
+    "tsconfig.json": "^1.0.11"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2"
+  }
+}
