@@ -214,11 +214,14 @@ h5 {
   border-left: 15px solid var(--accent-color);
   transform: scale(20);
 }
-
+#howBtn {
+  padding: 10px;
+  border-color: #ff4a17 !important;
+}
 .neon-glow-button {
   display: flex;
   align-items: center;
-  padding: 15px 30px;
+  padding: 10px 15px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
