@@ -259,4 +259,68 @@
       dataButton.disabled = false;
     }
   });
+
+  const csvDropzone = document.getElementById("csv-dropzone");
+  csvDropzone.addEventListener("dragover", function (event) {
+    event.preventDefault();
+    csvDropzone.classList.add("dragover");
+  });
+  csvDropzone.addEventListener("dragleave", function (event) {
+    event.preventDefault();
+    csvDropzone.classList.remove("dragover");
+  });
+  csvDropzone.addEventListener("drop", function (event) {
+    event.preventDefault();
+    csvDropzone.classList.remove("dragover");
+    const csvFile = event.dataTransfer.files[0];
+    if (
+      csvFile.type === "text/csv" ||
+      csvFile.type === "application/vnd.ms-excel"
+    ) {
+      alert("CSV file has been selected");
+      handleCsvFile(csvFile);
+    } else {
+      alert("Please drop a CSV file.");
+    }
+  });
+
+  async function handleCsvFile(file) {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const lines = reader.result.split("\n");
+      console.log(lines);
+      const response = await fetch("/csvData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(lines),
+      });
+      const data = await response.json();
+      if (data.length > 0) {
+        dataResult.innerHTML = "";
+        data.forEach((item) => {
+          dataResult.innerHTML += `<li>${item}</li>`;
+        });
+        dataButton.innerHTML = "Check Prices";
+        dataButton.disabled = false;
+        modal.show();
+      } else {
+        description.innerHTML = `<h6>Landed has not flagged any pricing for review at this time</h6>`;
+        dataButton.innerHTML = "Check Prices";
+        dataButton.disabled = false;
+      }
+    };
+
+    reader.onerror = () => {
+      showMessage("Error reading the file. Please try again.", "error");
+    };
+    // Read file into memory as UTF-8
+    // console.log(reader.onload)
+    reader.readAsText(file);
+
+    console.log(file.name);
+  }
+
+  // Implement file handling logic here
 })();

@@ -11,13 +11,6 @@ export class InventoryPackDB {
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   });
-  // client = new Client({
-  //   host: "127.0.0.1",
-  //   port: 5432,
-  //   database: "pricetreedb",
-  //   user: "postgres",
-  //   password: "p@ssword1",
-  // });
 
   async loadInventoryDB() {
     await this.client.connect();

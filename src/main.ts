@@ -5,17 +5,23 @@ import { LogisticsCostCalculator } from "./logisticsCostCalculator";
 import { InventoryPackDB } from "./pullDataDB";
 import { PriceCheck } from "./priceCheck";
 import dotenv from "dotenv";
+import { InputSKU } from "./modelSKU";
 dotenv.config();
 
 export class App {
-  async main() {
-    let inventoryPackDB = new InventoryPackDB();
-    await inventoryPackDB.loadInventoryDB();
-    // console.log(inventoryPackDB.inventoryDataArray);
+  async main(csvData?: InputSKU[]) {
+    let processingData: InputSKU[];
+    if (!csvData) {
+      let inventoryPackDB = new InventoryPackDB();
+      await inventoryPackDB.loadInventoryDB();
+      processingData = inventoryPackDB.inventoryDataArray;
+    } else {
+      processingData = csvData;
+    }
 
     // data clean
     let cleanUpData = new CleanUpData();
-    await cleanUpData.dataClean(inventoryPackDB.inventoryDataArray);
+    await cleanUpData.dataClean(processingData);
     // console.log(cleanUpData.cleanData);
 
     //add Duty

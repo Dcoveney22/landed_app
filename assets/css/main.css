@@ -253,6 +253,27 @@ h5 {
     0 0 50px #00eaff;
 }
 
+/* dropzone */
+#csv-dropzone {
+  margin-top: 50px;
+  width: 25%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border: 2px dashed white;
+  border-radius: 10px;
+  background: transparent;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+
+#csv-dropzone.dragover {
+  background-color: #e0f7ff;
+}
+
 @keyframes pulsate-play-btn {
   0% {
     transform: scale(0.6, 0.6);
