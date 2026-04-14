@@ -309,6 +309,7 @@
       const data = await response.json();
       if (!response.ok) {
         description.innerHTML = `<h6>${data.msg}<h6>`;
+        csvDropzone.innerHTML = "Or drop CSV file here";
         return;
       }
       if (data.length > 0) {
