@@ -68,7 +68,14 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
-
+            <li>
+              <a
+                href="#"
+                class="active border border-light rounded"
+                id="downloadCSVTemplateBtn"
+                >Download Template</a
+              >
+            </li>
             <li>
               <a
                 href="#"
@@ -94,12 +101,14 @@
           <h1 class="sitename" data-aos="fade-up" data-aos-delay="100">
             <b>Landed</b>
           </h1>
-          <h4 data-aos="fade-up" data-aos-delay="100">
+          <h3 data-aos="fade-up" data-aos-delay="100">
             <em>LAND. CHECK. GROW.</em>
-          </h4>
-          <p data-aos="fade-up" data-aos-delay="200">
-            A tool to help distributors get a handle on price changes
-          </p>
+          </h3>
+          <h5 data-aos="fade-up" data-aos-delay="200" class="lead">
+            A tool to helps drinks distributors get a handle on price changes
+          </h5>
+          <br />
+
           <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
             <button
               type="button"
@@ -108,14 +117,21 @@
               data-bs-toggle="modal"
               data-bs-target="#priceModal"
             >
-              Check Prices
+              Check Your Stored Products
             </button>
-
-            <div class="color-primary" id="descriptor"></div>
           </div>
-          <div id="csv-dropzone" class="color-light border">
-            Or drop CSV file here ➥
+          <div data-aos="fade-up" data-aos-delay="400">
+            <div id="csv-dropzone">Or drop CSV file here</div>
           </div>
+          <h6
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="small"
+            id="subHeading"
+          >
+            <em> Check your product database or upload your own CSV</em>
+          </h6>
+          <div class="color-primary" id="descriptor"></div>
         </div>
       </section>
 
@@ -201,9 +217,8 @@
                 you go to market.
               </p>
               <p>
-                The data you have provided to your account manager is used to
-                build your product profile - including brand, category, ABV,
-                size and ex-works price. From there, Landed does the rest.
+                Use your stored product database or upload your own CSV to get
+                started. From there, Landed does the rest.
               </p>
               <p class="mt-3 fw-bold small text-uppercase">How it works</p>
               <ul class="small">
@@ -212,12 +227,16 @@
                   rate for your product's ABV bracket
                 </li>
                 <li>
-                  Logistics costs are factored in based on your product's
-                  country of origin
+                  UK shipping and import costs are factored in based on your
+                  product's country of origin
                 </li>
                 <li>
-                  A retail margin is applied to model a UK retail price for each
-                  SKU
+                  Average warehouse landing, storage, and retailer delivery
+                  costs are applied
+                </li>
+                <li>
+                  A retail margin is applied to model a UK retail price across
+                  e-commerce and traditional retail channels
                 </li>
                 <li>
                   Any product whose modelled price falls outside advised
@@ -226,14 +245,22 @@
               </ul>
               <p class="mt-3 fw-bold small text-uppercase">Price Check</p>
               <p class="small">
-                Once the pipeline has run, click Price Check to see a full list
-                of any SKUs that Landed recommends reviewing before release.
-                This gives you the opportunity to assess your pricing strategy
+                Once the pipeline has run, Landed will highlight any SKUs that
+                fall outside recommended price thresholds for their category.
+                This gives you the opportunity to review your pricing strategy
                 before your products reach the market.
               </p>
+              <p class="mt-3 fw-bold small text-uppercase">
+                Supported Categories
+              </p>
+              <p class="small">
+                Landed currently supports Gin, Whisky and Liqueurs. Speak to
+                your account manager if you have products in other categories
+                you would like to assess.
+              </p>
               <p class="small fst-italic">
-                To update your product data or add new SKUs to your range, speak
-                to your account manager.
+                To update your stored product data or add new SKUs to your
+                range, speak to your account manager.
               </p>
             </div>
             <div class="modal-footer"></div>

@@ -232,6 +232,7 @@
   //loading data
 
   const dataButton = document.getElementById("btn-check-prices");
+
   const dataResult = document.getElementById("data-result");
   const description = document.getElementById("descriptor");
   const modal = new bootstrap.Modal(document.getElementById("priceModal"));
@@ -244,7 +245,14 @@
     const response = await fetch("/priceCheck", {
       method: "POST",
     });
+
     const data = await response.json();
+    if (!response.ok) {
+      description.innerHTML = `<h6>${data.msg}<h6>`;
+      dataButton.innerHTML = "Check Prices";
+      dataButton.disabled = false;
+      return;
+    }
     if (data.length > 0) {
       dataResult.innerHTML = "";
       data.forEach((item) => {
@@ -277,10 +285,12 @@
       csvFile.type === "text/csv" ||
       csvFile.type === "application/vnd.ms-excel"
     ) {
-      alert("CSV file has been selected");
+      csvDropzone.innerHTML = "Loading...";
+      description.innerHTML = "<h6>CSV file has been selected</h6>";
       handleCsvFile(csvFile);
+      // csvDropzone.innerHTML = "Or drop CSV file here";
     } else {
-      alert("Please drop a CSV file.");
+      description.innerHTML = "<h6>Incorrect Format: file must be a .CSV<h6>";
     }
   });
 
@@ -297,14 +307,20 @@
         body: JSON.stringify(lines),
       });
       const data = await response.json();
+      if (!response.ok) {
+        description.innerHTML = `<h6>${data.msg}<h6>`;
+        return;
+      }
       if (data.length > 0) {
         dataResult.innerHTML = "";
         data.forEach((item) => {
           dataResult.innerHTML += `<li>${item}</li>`;
         });
-        dataButton.innerHTML = "Check Prices";
         dataButton.disabled = false;
         modal.show();
+        dataButton.innerHTML = "Check Prices";
+        csvDropzone.innerHTML = "Or drop CSV file here";
+        description.innerHTML = "";
       } else {
         description.innerHTML = `<h6>Landed has not flagged any pricing for review at this time</h6>`;
         dataButton.innerHTML = "Check Prices";
@@ -322,5 +338,16 @@
     console.log(file.name);
   }
 
-  // Implement file handling logic here
+  document
+    .getElementById("downloadCSVTemplateBtn")
+    .addEventListener("click", function () {
+      console.log("CLICKED");
+
+      const link = document.createElement("a");
+      link.href = "../data/landed_template.csv";
+      link.download = "landed_template.csv";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
 })();

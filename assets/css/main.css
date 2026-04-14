@@ -218,6 +218,10 @@ h5 {
   padding: 10px;
   border-color: #ff4a17 !important;
 }
+#downloadCSVTemplateBtn {
+  padding: 10px;
+  border: 1px dashed #ff4a17 !important;
+}
 .neon-glow-button {
   display: flex;
   align-items: center;
@@ -256,10 +260,10 @@ h5 {
 /* dropzone */
 #csv-dropzone {
   margin-top: 50px;
-  width: 25%;
+  width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
-  border: 2px dashed white;
+  border: 2.5px dashed #ff4a17;
   border-radius: 10px;
   background: transparent;
   padding-left: 30px;
@@ -271,7 +275,11 @@ h5 {
 }
 
 #csv-dropzone.dragover {
-  background-color: #e0f7ff;
+  background-color: orange;
+}
+
+#subHeading {
+  padding-top: 40px;
 }
 
 @keyframes pulsate-play-btn {
